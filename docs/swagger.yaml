@@ -1,0 +1,162 @@
+definitions:
+  models.Ioc:
+    properties:
+      description:
+        type: string
+      id:
+        type: string
+      ioc:
+        type: string
+      otx_hash:
+        type: string
+      source:
+        type: string
+      type:
+        type: string
+    required:
+    - ioc
+    - type
+    type: object
+  models.Ioc_Get:
+    properties:
+      id:
+        items:
+          type: string
+        type: array
+    type: object
+  models.Ioc_input:
+    properties:
+      description:
+        type: string
+      ioc:
+        type: string
+      otx_hash:
+        type: string
+      source:
+        type: string
+      type:
+        type: string
+    required:
+    - ioc
+    - type
+    type: object
+info:
+  contact: {}
+paths:
+  /ioc:
+    post:
+      consumes:
+      - application/json
+      description: Create New Ioc
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/models.Ioc_input'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Ioc'
+      summary: Create New Ioc
+      tags:
+      - iocs
+  /ioc/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get 1 Ioc By id
+      parameters:
+      - description: id ioc
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Ioc'
+      summary: Get 1 Ioc
+      tags:
+      - iocs
+    put:
+      consumes:
+      - application/json
+      description: Edit Existing Ioc
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/models.Ioc_input'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Ioc'
+      summary: Edit Ioc
+      tags:
+      - iocs
+  /iocs:
+    get:
+      consumes:
+      - application/json
+      description: get all data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Ioc'
+      summary: Show an account
+      tags:
+      - iocs
+  /iocs/csv:
+    get:
+      consumes:
+      - application/json
+      description: get data as csv
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Ioc'
+      summary: Show data
+      tags:
+      - iocs
+  /iocs/some:
+    get:
+      consumes:
+      - application/json
+      description: get some data
+      parameters:
+      - description: query params
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/models.Ioc_Get'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Ioc'
+      summary: Show some
+      tags:
+      - iocs
+swagger: "2.0"

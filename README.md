@@ -6,7 +6,6 @@ This code written in golang that use:
 * [Go Fiber](https://gofiber.io/)
 
     Your favorite lightweight web framework
-
 * [swagger](https://github.com/swaggo/fiber-swagger)
 
     Help you test your API and for nice documentation

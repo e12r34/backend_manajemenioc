@@ -4,14 +4,19 @@ This program is your favorite golang fiber-backend that update ioc from many sou
 # Technology
 This code written in golang that use:
 * [Go Fiber](https://gofiber.io/)
+
 Your favorite lightweight web framework
 * [swagger](https://github.com/swaggo/fiber-swagger)
+
 Help you test your API and for nice documentation
 * [mongodb](https://www.mongodb.com/)
+
 Your favorite general purpose nosql database
 * [godotenv](https://github.com/joho/godotenv)
+
 So you can read config from .env
 * [gocsv](https://github.com/gocarina/gocsv)
+
 so you can handle csv easily
 
 

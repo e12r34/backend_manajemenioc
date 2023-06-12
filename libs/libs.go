@@ -194,10 +194,21 @@ func MgMakeRules(ctx context.Context, Collection *mongo.Collection, pulseCollect
 			Ioc["dip"] = fromDB.Indicator
 			Ioc["type"] = "dip"
 		} else if fromDB.Type == "URL" {
+			// fmt.Println(fromDB.Indicator)
 			URL := strings.SplitN(strings.ReplaceAll(strings.ReplaceAll(fromDB.Indicator, "https://", ""), "http://", ""), "/", 2)
-			Ioc["host"] = URL[0]
-			Ioc["uri"] = URL[1]
-			Ioc["type"] = "host:dport:uri"
+			// Ioc["host"] = URL[0]
+			// Ioc["uri"] = URL[1]
+			// Ioc["type"] = "host:dport:uri"
+
+			if len(URL) >= 2 {
+				Ioc["host"] = URL[0]
+				Ioc["uri"] = URL[1]
+				Ioc["type"] = "host:dport:uri"
+			} else if len(URL) == 1 {
+				Ioc["host"] = URL[0]
+				Ioc["uri"] = ""
+				Ioc["type"] = "host:dport:uri"
+			}
 
 			if strings.Contains(fromDB.Indicator, "https://") {
 				Ioc["dport"] = 443

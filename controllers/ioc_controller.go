@@ -167,7 +167,7 @@ func GetAllIocs(c *fiber.Ctx) error {
 	var iocs []models.Ioc
 	defer cancel()
 
-	results, err := iocCollection.Find(ctx, bson.M{})
+	results, err := iocCollection.Find(ctx, bson.M{"status": bson.M{"$ne": false}})
 
 	if err != nil {
 		return c.Status(http.StatusInternalServerError).JSON(responses.UserResponse{Status: http.StatusInternalServerError, Message: "error", Data: err.Error()})
